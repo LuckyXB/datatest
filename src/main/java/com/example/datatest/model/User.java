@@ -1,6 +1,8 @@
 package com.example.datatest.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @Author xuebiao
@@ -8,8 +10,10 @@ import lombok.Data;
  * @Description:
  **/
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
-    private Long id;
+    private String id;
     private String name;
     private Integer age;
     private String email;

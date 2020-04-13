@@ -47,7 +47,7 @@ public class SqlExecutor implements AutoCloseable {
 				for (int i = 0; i < args.length; i++) {
 					ps.setObject(i + 1, args[i]);
 				}
-				try (ResultSet rs = ps.executeQuery(sql)) {
+				try (ResultSet rs = ps.executeQuery()) {
 					System.out.println(ps);
 					List<List<Object>> result = new ArrayList<>();
 					int colcount = rs.getMetaData().getColumnCount();
@@ -71,7 +71,7 @@ public class SqlExecutor implements AutoCloseable {
 				for (int i = 0; i < args.length; i++) {
 					ps.setObject(i + 1, args[i]);
 				}
-				try (ResultSet rs = ps.executeQuery(sql)) {
+				try (ResultSet rs = ps.executeQuery()) {
 					List<T> result = new ArrayList<>();
 					ResultSetMetaData meta = rs.getMetaData();
 					List<String> columns = new ArrayList<>();
@@ -94,7 +94,8 @@ public class SqlExecutor implements AutoCloseable {
 			int index = 0;
 			for (String col : columns) {
 				index++;
-				Field f = clazz.getField(col);
+				Field f = clazz.getDeclaredField(col);
+				f.setAccessible(true);
 				// 设置值
 				f.set(bean, rs.getObject(index, f.getType()));
 			}
@@ -102,7 +103,7 @@ public class SqlExecutor implements AutoCloseable {
 		} catch (InstantiationException | IllegalAccessException | NoSuchFieldException | SecurityException
 				| IllegalArgumentException | SQLException e) {
 
-			throw new RuntimeException(e.getMessage());
+			throw new RuntimeException();
 		}
 	}
 
@@ -124,5 +125,15 @@ public class SqlExecutor implements AutoCloseable {
 	// 删除数据
 	public int delete(String perparedSql, Object... args) throws SQLException {
 		return this.insert(perparedSql, args);
+	}
+	
+	public int deleteById(String tableName,Integer id) {
+		
+		try {
+			return this.delete("delete from "+tableName+ " where id = ?",id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
 	}
 }
