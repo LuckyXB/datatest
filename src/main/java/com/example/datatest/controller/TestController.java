@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.datatest.aop.EnableLogStore;
 import com.example.datatest.model.Test;
 import com.example.datatest.service.TestService;
 
@@ -22,6 +23,7 @@ public class TestController {
     TestService testService;
 
     @GetMapping("/hhh")
+    @EnableLogStore
     public String getdata(){
         List<Test> results = testService.findAll();
         StringBuffer res = new StringBuffer();
