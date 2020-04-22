@@ -1,12 +1,12 @@
 package com.example.datatest.learning;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.util.CollectionUtils;
+
+import com.example.datatest.model.User;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -31,8 +31,8 @@ public final  class LearningX {
 	}
 	
 	public static void main(String[] args) {
-		LearningX lx = new LearningX();
-		lx.getOrganizationIdList(1).forEach(System.out::println);;
+//		LearningX lx = new LearningX();
+//		lx.getOrganizationIdList(1).forEach(System.out::println);;
 //		
 //		BigInteger b1 = new BigInteger("1");
 //		BigInteger b2 = new BigInteger("2");
@@ -41,8 +41,7 @@ public final  class LearningX {
 //		List<BigInteger> hhhh = Arrays.asList(b1,b2,b3);
 //		BigInteger b4 = new BigInteger("3");
 //		System.out.println(hhhh.contains(BigInteger.valueOf(1)));
-		
-		
+		System.out.println(User.class.isAssignableFrom(User.class));
 	}
 	
 	public List<Integer> getOrganizationIdList(Integer organizationId) {

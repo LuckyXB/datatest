@@ -9,4 +9,5 @@ import com.example.datatest.model.User;
  * @Description:
  **/
 public interface UserMapper extends BaseMapper<User> {
+	
 }
