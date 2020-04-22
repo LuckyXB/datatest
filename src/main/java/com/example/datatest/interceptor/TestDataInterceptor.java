@@ -44,7 +44,7 @@ public class TestDataInterceptor implements HandlerInterceptor {
 		}
 		Date expiration = claims.getExpiration();
 		if(expiration.before(new Date())) {
-			log.error("token expired");;
+			log.error("token expired");
 			responseError(httpServletResponse,"token expired");
 			return false;
 		}

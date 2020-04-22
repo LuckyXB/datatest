@@ -31,9 +31,11 @@ public class GlobalFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 			throws IOException, ServletException {
 		log.info("进入filter");
-//		HttpServletRequest httpServletRequest = (HttpServletRequest) req;
-//		HttpServletResponse httpServletResponse = (HttpServletResponse) res;
-//		String reqUrl = httpServletRequest.getRequestURI();
+		HttpServletRequest httpServletRequest = (HttpServletRequest) req;
+		HttpServletResponse httpServletResponse = (HttpServletResponse) res;
+		String reqUrl = httpServletRequest.getRequestURI();
+		
+		log.info("reqUrl:"+reqUrl);
 //		if(StrUtil.equals(reqUrl, "/login")) {
 //			chain.doFilter(req, res);
 //		}

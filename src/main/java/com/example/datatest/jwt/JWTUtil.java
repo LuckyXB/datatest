@@ -22,7 +22,7 @@ import io.jsonwebtoken.UnsupportedJwtException;
 public class JWTUtil {
 
 	private static final String SECRET_KEY = "123456xb";
-	private static final int CALENDAR_INTERVAL = 10;// 有效期（ 天）
+	private static final int CALENDAR_INTERVAL = 10;// 有效期（ min）
 
 	public static String createJWT(Integer userId, String name) {
 
@@ -30,7 +30,7 @@ public class JWTUtil {
 		// expire time
 		Calendar nowTime = Calendar.getInstance();
 		// 有10天有效期
-		nowTime.add(Calendar.DATE, CALENDAR_INTERVAL);
+		nowTime.add(Calendar.MINUTE, CALENDAR_INTERVAL);
 		Date expiresDate = nowTime.getTime();
 		Claims claims = Jwts.claims();
 		claims.put("name", name);
