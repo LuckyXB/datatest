@@ -9,4 +9,4 @@ server:
     servlet:
         context-path: /helloworld
 logging:
-    file: datatest.log
+    path: ./log/

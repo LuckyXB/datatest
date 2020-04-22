@@ -69,7 +69,6 @@ public class LogStoreAspect {
             logdata.put("类名",className);
             logdata.put("方法名",methodName);
             log.info(JSONUtil.toJSONString(logdata));
-            //
         }catch (Exception e){
             log.error(e.getMessage(),e);
         }finally {
