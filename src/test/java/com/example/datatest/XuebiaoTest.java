@@ -46,4 +46,15 @@ public class XuebiaoTest {
             return Optional.empty();
         }
     }
+
+
+    static  ThreadLocal<String> share = new ThreadLocal<>();
+    public static  void  main(String[] args){
+        new Thread(()->{
+            System.out.println(Thread.currentThread().getName());
+            share.set(Thread.currentThread().getName());
+        }).start();
+        share.get();
+    }
+
 }
